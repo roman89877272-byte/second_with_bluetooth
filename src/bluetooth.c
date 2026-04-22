@@ -1,15 +1,3 @@
-/*
- * bluetooth.c — BLE NUS library for nRF54L15
- *
- * Обеспечивает:
- *   - инициализацию BT-стека
- *   - Nordic UART Service (NUS) для приёма AT-команд по BLE
- *   - авто-рестарт рекламы после разрыва соединения
- *
- * Не использует UART-мост и dk_buttons_and_leds —
- * GPIO управляются в main.c.
- */
-
 #include "bluetooth.h"
 
 #include <zephyr/kernel.h>
@@ -176,7 +164,6 @@ int bt_service_init(ble_data_received_cb_t cb)
     }
     LOG_INF("Bluetooth initialized");
 
-    /* settings_load() убран — требует BT_SETTINGS */
 
     err = bt_nus_init(&nus_cb);
     if (err) {

@@ -450,7 +450,7 @@ int main(void)
 		printk("Button not ready\n");
 	}
 
-	/* --- Инициализация BLE (вместо UART) --- */
+	/* --- Инициализация BLE --- */
 	err = bt_service_init(ble_receive_cb);
 	if (err) {
 		printk("BT service init failed (err %d)\n", err);
@@ -459,9 +459,5 @@ int main(void)
 
 	printk("LED controller ready. Waiting for BLE commands...\n");
 
-	/*
-	 * main() возвращает 0 — потоки control_thread и status_led_thread
-	 * продолжают работать независимо (Zephyr kernel не завершается).
-	 */
 	return 0;
 }
